@@ -128,7 +128,8 @@ apt-get install bind9 -ya
 ```
  <br>
 b). Pembuatan Domain<br>	
-- Pada terminal Yudhistira ketik :_nano /etc/bind/named.conf.local_<br>
+- Pada terminal Yudhistira ketik : *nano /etc/bind/named.conf.local* 
+<br>
 Isi dengan : 
 ```bash
 zone "arjuna.b23.com" {
@@ -145,7 +146,8 @@ nano /etc/bind/jarkom/arjuna
 ```
 ![4](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/4b8a6610-100c-4d3e-8d94-f0a0d2d211d5)
 <br>
-- Pada _/root/.bashrc_  tambahkan :_service bind9 restart_<br>
+- Pada */root/.bashrc*  tambahkan : *service bind9 restart*
+<br>
 **Untuk pembuktiannya :** <br>
 - Pada /etc/resolv.conf, masukkan nameserver IP Yudhistira (nameserver 10.20.1.4)<br>
 - Lalu ping domain dan alias yang telah dibuat<br>
@@ -181,7 +183,7 @@ nano /etc/bind/jarkom/abimanyu
 ```
 ![6](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/95f887f9-f8cf-493d-8839-d725d45a417e)
 <br>
-Pada terminal : _service bind9 restart_
+Pada terminal : *service bind9 restart*
 **Untuk pembuktiannya :** <br>
 Pada /etc/resolv.conf, masukkan nameserver IP Yudhistira **nameserver 10.20.1.4**
 Lalu ping domain yang telah dibuat.
@@ -208,12 +210,14 @@ zone "3.20.10.in-addr.arpa" {
 };
 ```
 <br>
-b). Copy-kan file db.local : _cp /etc/bind/db.local /etc/bind/jarkom/reverseabimanyu_ <br>
+b). Copy-kan file db.local :*cp /etc/bind/db.local /etc/bind/jarkom/reverseabimanyu*
+<br>
 c). Lalu edit file reverseabimanyu
 ![8](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/28d2c5f3-f828-4eff-8288-fc22e9843554)
 <br>
-d). Pada terminal : _service bind9 restart_
-e). Pada terminal Nakula dan tambahkan isi _/root/.bashrc_: 
+d). Pada terminal : _service bind9 restart_ 
+<br>
+e). Pada terminal Nakula dan tambahkan isi _/root/.bashrc_ : 
 ```bash
 	apt-get update
 	apt-get install dnsutils
@@ -224,6 +228,7 @@ Pada terminal Nakula ketik :
 	host -t PTR 10.20.3.3
 ```
 ![9](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/f13ac826-cc01-42fb-a950-6cfad4290f26)
+<br>
 
 ## **Soal Nomor 6**
 Agar dapat tetap dihubungi ketika DNS Server Yudhistira bermasalah, buat juga Werkudara sebagai DNS Slave untuk domain utama.
@@ -248,14 +253,15 @@ zone "abimanyu.b23.com" {
 };
 ```
 <br>
-b). Pada terminal : _service bind9 restart_ <br>
+b). Pada terminal : *service bind9 restart* 
+<br>
 c). Konfigurasi Werkudara <br>
-- Pada terminal dan simpan di /root : 
+- Pada terminal dan simpan di /root/.bashrc
 ```bash
 	apt-get update
 	apt-get install bind9 -y
 ```
-Tambahkan syntax di _/etc/bind/named.conf.local_
+Tambahkan syntax di /etc/bind/named.conf.local
 ```bash
 zone "arjuna.b23.com" {
     type slave;
@@ -268,11 +274,11 @@ zone "abimanyu.b23.com" {
     file "/var/lib/bind/jarkom/abimanyu";
 };
 ```
-<br>
-Pada terminal : _service bind9 restart_
+
+Pada terminal : service bind9 restart
 **Bukti :**
 1. Lakukan  service bind9 stop di Yudhistira <br>
-2. Lakukan pengaturan nameserver dengan menambahkan isi _/etc/resolv.conf_ di Nakula :
+2. Lakukan pengaturan nameserver dengan menambahkan isi */etc/resolv.conf* di Nakula :
 ```bash
 nameserver 10.20.1.4
 nameserver 10.20.1.5
@@ -286,12 +292,11 @@ Seperti yang kita tahu karena banyak sekali informasi yang harus diterima, buatl
 a). Konfigurasi pada Yudhistira : <br>
 edit _/etc/bind/jarkom/abimanyu_
 ![10](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/1038d860-a6d5-46cd-bffc-f168fb3b336d)
-
 <br>
+
 Edit  /etc/bind/named.conf.options dengan comment dan tambahkan baris seperti gambar
 ![11](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/0d1e1b8f-692c-4b6f-9a32-656f39ca89aa) 
 Pada terminal : _service bind9 restart_
-
 <br>
 b). Konfigurasi pada Werkudara<br>
 Edit _/etc/bind/named.conf.options_ dengan comment dan tambahkan baris seperti gambar
@@ -300,20 +305,21 @@ Edit _/etc/bind/named.conf.options_ dengan comment dan tambahkan baris seperti g
 Tambahkan pada /etc/bind/named.conf.local 
 ```bash
 zone "baratayuda.abimanyu.b23.com" {
-    type master;
-    file "/var/lib/bind/delegasi/baratayuda";
-};
+	type master;
+	file "/var/lib/bind/delegasi/baratayuda";
+	};
 ```
 <br>
+
 Pada terminal : 
 ```bash
 mkdir /etc/bind/delegasi
 cp /etc/bind/db.local /etc/bind/delegasi/baratayuda
 ```
 ![13](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/119245b2-ac08-42d9-b7b5-214e09e96e9d)
-
 <br>
-Pada terminal : _service bind9 restart_
+
+Pada terminal : _service bind9 restart_ <br>
 **Bukti :** 
 ![14](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/5bbb0ae2-a5cd-4498-aa17-13d84245ff5b)
 <br>
@@ -440,7 +446,7 @@ server {
 
  	error_log /var/log/nginx/arjuna.log;
  	access_log /var/log/nginx/arjuna_access.log;
- }
+	}
 ```
 <br>
 
@@ -507,6 +513,7 @@ server {
  }
 ```
 <br>
+
 d). Pada terminal : 
 ```bash
 ln -s /etc/nginx/sites-available/lb-arjuna /etc/nginx/sites-enabled
