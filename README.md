@@ -17,7 +17,7 @@ Yudhistira – DNS Master<br>
 Werkudara – DNS Slave<br>
 Arjuna – Load Balancer<br>
 Prabukusuma, Abimanyu, dan Wisanggeni – Web Server<br>
-Nakula dan Sadewa – Client 
+Nakula dan Sadewa – Client<br>
 <br>**Langkah Penyelesaian Soal 1 :** <br>
 a). ![1](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/4c437640-5344-4752-9aed-3becda9ebd6f)
 <br>
