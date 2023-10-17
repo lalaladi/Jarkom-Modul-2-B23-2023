@@ -130,7 +130,6 @@ apt-get install bind9 -ya
  
 b). Pembuatan Domain<br>
 - Pada terminal Yudhistira ketik : *nano /etc/bind/named.conf.local*
-  
 <br>
 Isi dengan 
 ```bash
@@ -139,14 +138,15 @@ zone "arjuna.b23.com" {
 	file "/etc/bind/jarkom/arjuna";
  	};
 ```
-<br>
 
+<br>
 - Pada terminal :
 ```bash
 mkdir /etc/bind/jarkom
 cp /etc/bind/db.local /etc/bind/jarkom/arjuna
 nano /etc/bind/jarkom/arjuna
 ```
+
 ![4](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/4b8a6610-100c-4d3e-8d94-f0a0d2d211d5)
 <br>
 
@@ -158,6 +158,7 @@ nano /etc/bind/jarkom/arjuna
 ![5](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/52981d84-cab9-4e67-8c7d-0f4af51f4214)
 
 <br>
+
 ![34](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/f3537cbe-1df5-4b9c-a7e2-9ee4a034931c) 
 
 <br>
