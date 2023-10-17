@@ -1,4 +1,12 @@
 # Jarkom-Modul-2-B23-2023
+# **Praktikum Modul 2 Jaringan Komputer**
+Berikut adalah Repository dari Kelompok B23 untuk pengerjaan Praktikum Modul 2. Dalam Repository ini terdapat daftar anggota kelompok, dokumentasi dan Penjelasan tiap soal, _Screenshot_, dan Kendala yang Dialami. 
+
+# **Anggota Kelompok**
+| Nama                      | NRP        | Kelas               |
+| ------------------------- | ---------- | ------------------- |
+| Armadya Hermawan Sarwono  | 5025211243 | Jaringan Komputer B |
+| Dian Lies Seviona Dabukke | 5025211080 | Jaringan Komputer B |
 
 # **Dokumentasi dan Penjelasan Soal**
 Berikut adalah dokumentasi yang tiap soal dan penjelasan terkait perintah yang digunakan :
