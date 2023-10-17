@@ -12,7 +12,7 @@ Berikut adalah Repository dari Kelompok B23 untuk pengerjaan Praktikum Modul 2. 
 Berikut adalah dokumentasi yang tiap soal dan penjelasan terkait perintah yang digunakan :
 
 ## **Soal Nomor 1**
-Buatlah topologi dengan:
+Buatlah topologi dengan:<br>
 Yudhistira – DNS Master<br>
 Werkudara – DNS Slave<br>
 Arjuna – Load Balancer<br>
@@ -20,8 +20,8 @@ Prabukusuma, Abimanyu, dan Wisanggeni – Web Server<br>
 Nakula dan Sadewa – Client 
 <br>**Langkah Penyelesaian Soal 1 :** <br>
 a). ![1](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/4c437640-5344-4752-9aed-3becda9ebd6f)
-
-b). Lakukan konfigurasi IP tiap node 
+<br>
+b). Lakukan konfigurasi IP tiap node<br> 
 Pandudewanata
 ```bash
 auto eth0
@@ -104,27 +104,29 @@ iface eth0 inet static
 	netmask 255.255.255.0
 	gateway 10.20.1.2
 ```
-	**Untuk tiap command yang ada dijalankan terlebih dahulu di terminal lalu simpan di /root/**
-c). Pada /root/.bashrc  dengan Prefix IP kelompok ini (B23) 
+**Untuk tiap command yang ada dijalankan terlebih dahulu di terminal lalu simpan di /root/**
+c). Pada _ _/root/.bashrc_ _  dengan Prefix IP kelompok ini (B23) 
 ```bash
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.20.0.0/16
 ```
-d). Agar dapat terhubung ke internet melalui Pandudewanata ketik dalam /root/.bashrc tiap node ubuntu yang dibuat 
+d). Agar dapat terhubung ke internet melalui Pandudewanata ketik dalam _ _/root/.bashrc_ _ tiap node ubuntu yang dibuat 
 ```bash
  echo nameserver 192.168.122.1 > /etc/resolv.conf
 ```
 Lalu jika dilakukan ping google.com pada ubuntu yang dipilih akan terlihat seperti berikut 
 ![2](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/5abc4a07-c91c-41d6-a125-ac463a8ea528)
+![3](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/506adde8-b914-4619-8839-5641a400b031)
 
 ## **Soal Nomor 2**
 Buatlah website utama pada node arjuna dengan akses ke arjuna.yyy.com dengan alias www.arjuna.yyy.com dengan yyy merupakan kode kelompok.
 
 <br>**Langkah Penyelesaian Soal 2 :** <br>
-	a). Pada /root/.bashrc  di Yudhistira
-apt-get update
-		apt-get install bind9 -y
-	 b). Pembuatan Domain	
-Pada terminal Yudhistira ketik : nano /etc/bind/named.conf.local 
+a). Pada _ _/root/.bashrc  di Yudhistira :
+		apt-get update
+		apt-get install bind9 -ya_ _ <br>
+b). Pembuatan Domain<br>	
+- Pada terminal Yudhistira ketik :
+_ _nano /etc/bind/named.conf.local_ _ <br>
 Isi dengan : 
 ```bash
 zone "arjuna.b23.com" {
@@ -133,29 +135,34 @@ zone "arjuna.b23.com" {
 };
 ```
 <br>
-Pada terminal :
+- Pada terminal :
+```bash
 mkdir /etc/bind/jarkom
 cp /etc/bind/db.local /etc/bind/jarkom/arjuna
 nano /etc/bind/jarkom/arjuna
-
+```
+![4](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/4b8a6610-100c-4d3e-8d94-f0a0d2d211d5)
 <br>
-Pada /root/.bashrc  tambahkan: service bind9 restart
-Untuk pembuktiannya : 
- Pada /etc/resolv.conf, masukkan nameserver IP Yudhistira 
- nameserver 10.20.1.4
-Lalu ping domain dan alias yang telah dibuat
-
+- Pada _ _/root/.bashrc_ _  tambahkan: _ _service bind9 restart_ _<br>
+**Untuk pembuktiannya :** 
+- Pada /etc/resolv.conf, masukkan nameserver IP Yudhistira (nameserver 10.20.1.4)
+- Lalu ping domain dan alias yang telah dibuat
+![5](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/52981d84-cab9-4e67-8c7d-0f4af51f4214)
+![34](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/f3537cbe-1df5-4b9c-a7e2-9ee4a034931c) 
 <br>
 
 ## **Soal Nomor 3**
 Dengan cara yang sama seperti soal nomor 2, buatlah website utama dengan akses ke abimanyu.yyy.com dan alias www.abimanyu.yyy.com.
 
 <br>**Langkah Penyelesaian Soal 3 :** <br>
-	a). Pada /root/.bashrc  
-apt-get update
-		apt-get install bind9 -y
-	 b). Pembuatan Domain	
-Pada terminal Yudhistira ketik : nano /etc/bind/named.conf.local 
+a). Pada _ _/root/.bashrc_ _ 
+```bash
+	apt-get update
+	apt-get install bind9 -y
+```
+<br>
+b). Pembuatan Domain	
+Pada terminal Yudhistira ketik : _ _nano /etc/bind/named.conf.local_ _<br>
 Isi dengan : 
 ```bash
 zone "abimanyu.b23.com" {
@@ -165,35 +172,32 @@ zone "abimanyu.b23.com" {
 ```
 <br>
 Pada terminal :
+```bash
 mkdir /etc/bind/jarkom
 cp /etc/bind/db.local /etc/bind/jarkom/abimanyu
 nano /etc/bind/jarkom/abimanyu
-
-
+```
+![6](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/95f887f9-f8cf-493d-8839-d725d45a417e)
 <br>
-Pada terminal : service bind9 restart
-Untuk pembuktiannya : 
- Pada /etc/resolv.conf, masukkan nameserver IP Yudhistira 
- nameserver 10.20.1.4
-Lalu ping domain yang telah dibuat
-Bukti : 
+Pada terminal : _ _service bind9 restart_ _
+**Untuk pembuktiannya :**
+Pada /etc/resolv.conf, masukkan nameserver IP Yudhistira **nameserver 10.20.1.4**
+Lalu ping domain yang telah dibuat.
 
 ## **Soal Nomor 4**
 Kemudian, karena terdapat beberapa web yang harus di-deploy, buatlah subdomain parikesit.abimanyu.yyy.com yang diatur DNS-nya di Yudhistira dan mengarah ke Abimanyu.
 
 <br>**Langkah Penyelesaian Soal 4 :** <br>
-a). Edit /etc/bind/jarkom/abimanyu di Yudhistira 
-	
-
-b). Pada terminal Yudhistira : service bind9 restart
-Bukti : 
+a). Edit _ _/etc/bind/jarkom/abimanyu_ _ di Yudhistira 
+![7](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/85ea88f4-07d1-410c-a5f0-aa8906f97513)
+<br>
+b). Pada terminal Yudhistira : _ _service bind9 restart_ _ 
 
 ## **Soal Nomor 5**
 Buat juga reverse domain untuk domain utama. (Abimanyu saja yang direverse)
 
 <br>**Langkah Penyelesaian Soal 5 :** <br>
-
-	a). Pada terminal Yudhistira ketik : nano /etc/bind/named.conf.local 
+a). Pada terminal Yudhistira ketik : _ _nano /etc/bind/named.conf.local_ _ <br> 
 Isi dengan : 
 ```bash
 zone "3.20.10.in-addr.arpa" {
@@ -202,25 +206,30 @@ zone "3.20.10.in-addr.arpa" {
 };
 ```
 <br>
-b). Copy-kan file db.local : cp /etc/bind/db.local /etc/bind/jarkom/reverseabimanyu
-	c). Lalu edit file reverseabimanyu
-
+b). Copy-kan file db.local : _ _cp /etc/bind/db.local /etc/bind/jarkom/reverseabimanyu_ _ <br>
+c). Lalu edit file reverseabimanyu
+![8](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/28d2c5f3-f828-4eff-8288-fc22e9843554)
 <br>
-d).  Pada terminal : service bind9 restart
-e).  Pada terminal Nakula dan tambahkan isi /root/.bashrc : 
+d).  Pada terminal : _ _service bind9 restart_ _
+e).  Pada terminal Nakula dan tambahkan isi _ _/root/.bashrc_ _ : 
+```bash
 apt-get update
 apt-get install dnsutils
-Bukti : 
-	Terminal Nakula ketik : host -t PTR 10.20.3.3
-
+```
+**Bukti :** <br>
+Pada terminal Nakula ketik : 
+```bash 
+host -t PTR 10.20.3.3
+```
+![9](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/f13ac826-cc01-42fb-a950-6cfad4290f26)
 
 ## **Soal Nomor 6**
 Agar dapat tetap dihubungi ketika DNS Server Yudhistira bermasalah, buat juga Werkudara sebagai DNS Slave untuk domain utama.
 
 <br>**Langkah Penyelesaian Soal 6 :** <br>
-	a).  Pada terminal Yudhistira, edit /etc/bind/named.conf.local 
-		```bash
-		zone "arjuna.b23.com" {
+a).  Pada terminal Yudhistira, edit _ _/etc/bind/named.conf.local_ _ 
+```bash
+zone "arjuna.b23.com" {
     type master;
     notify yes;
     also-notify {10.20.1.5 ; };
@@ -237,13 +246,16 @@ zone "abimanyu.b23.com" {
 };
 ```
 <br>
-	  b). Pada terminal : service bind9 restart
-	 c). Konfigurasi Werkudara
- Pada terminal dan simpan di /root : apt-get update
-     apt-get install bind9 -y
-Tambahkan syntax di /etc/bind/named.conf.local 
-	```bash
-	zone "arjuna.b23.com" {
+b). Pada terminal : _ _service bind9 restart_ _
+c). Konfigurasi Werkudara
+- Pada terminal dan simpan di /root : 
+```bash
+apt-get update
+apt-get install bind9 -y
+```
+Tambahkan syntax di _ _/etc/bind/named.conf.local_ _
+```bash
+zone "arjuna.b23.com" {
     type slave;
     masters {10.20.1.4; };
     file "/var/lib/bind/jarkom/arjuna";
@@ -254,73 +266,82 @@ zone "abimanyu.b23.com" {
     file "/var/lib/bind/jarkom/abimanyu";
 };
 ```
-	<br>
-Pada terminal : service bind9 restart
-	Bukti : 1. Lakukan  service bind9 stop di Yudhistira
-		2. Lakukan pengaturan nameserver dengan menambahkan isi  /etc/resolv.conf di Nakula  : nameserver 10.20.1.4
-				    nameserver 10.20.1.5
-		3. Lalu ping arjuna atau abimanyu
+<br>
+Pada terminal : _ _service bind9 restart_ _
+**Bukti :**
+1. Lakukan  service bind9 stop di Yudhistira <br>
+2. Lakukan pengaturan nameserver dengan menambahkan isi _ _/etc/resolv.conf_ _ di Nakula :
+```bash
+nameserver 10.20.1.4
+nameserver 10.20.1.5
+```
+<br>
+3. Lalu ping arjuna atau abimanyu
 
 ## **Soal Nomor 7**
 Seperti yang kita tahu karena banyak sekali informasi yang harus diterima, buatlah subdomain khusus untuk perang yaitu baratayuda.abimanyu.yyy.com dengan alias www.baratayuda.abimanyu.yyy.com yang didelegasikan dari Yudhistira ke Werkudara dengan IP menuju ke Abimanyu dalam folder Baratayuda.
 
 <br>**Langkah Penyelesaian Soal 7 :** <br>
-	a). Konfigurasi pada Yudhistira
-edit /etc/bind/jarkom/abimanyu
-
+a). Konfigurasi pada Yudhistira<br>
+edit _ _/etc/bind/jarkom/abimanyu_ _
+![10](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/1038d860-a6d5-46cd-bffc-f168fb3b336d)
 <br>
 Edit  /etc/bind/named.conf.options dengan comment dan tambahkan baris seperti gambar
-
+![11](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/0d1e1b8f-692c-4b6f-9a32-656f39ca89aa)
 <br>
-Pada terminal : service bind9 restart
-
-b). Konfigurasi pada Werkudara
-Edit  /etc/bind/named.conf.options dengan comment dan tambahkan baris seperti gambar
-
+Pada terminal : _ _service bind9 restart_ _
+<br>
+b). Konfigurasi pada Werkudara<br>
+Edit _ _/etc/bind/named.conf.options_ _ dengan comment dan tambahkan baris seperti gambar
+![12](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/71d924b7-7524-4788-891c-efc8b59ed843)
 <br>
 Tambahkan pada /etc/bind/named.conf.local 
 ```bash
-	zone "baratayuda.abimanyu.b23.com" {
+zone "baratayuda.abimanyu.b23.com" {
     type master;
     file "/var/lib/bind/delegasi/baratayuda";
 };
 ```
 <br>
 Pada terminal : 
+```bash
 mkdir /etc/bind/delegasi
 cp /etc/bind/db.local /etc/bind/delegasi/baratayuda
-
+```
+![13](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/119245b2-ac08-42d9-b7b5-214e09e96e9d)
 <br>
-Pada terminal : service bind9 restart
-
-Bukti : 
+Pada terminal : _ _service bind9 restart_ _
+**Bukti :** 
+![14](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/5bbb0ae2-a5cd-4498-aa17-13d84245ff5b)
+<br>
 
 ## **Soal Nomor 8**
 Untuk informasi yang lebih spesifik mengenai Ranjapan Baratayuda, buatlah subdomain melalui Werkudara dengan akses rjp.baratayuda.abimanyu.yyy.com dengan alias www.rjp.baratayuda.abimanyu.yyy.com yang mengarah ke Abimanyu.
 
 <br>**Langkah Penyelesaian Soal 8 :** <br>
-a). Edit /etc/bind/delegasi/baratayuda di Werkudara
-	
-
-b). Pada terminal Werkudara: service bind9 restart
-
-Bukti :  
-
+a). Edit _ _/etc/bind/delegasi/baratayuda_ _ di Werkudara
+![15](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/5f481705-b350-420a-aa5e-7d8feb953757)	
+b). Pada terminal Werkudara: _ _service bind9 restart_ _
+**Bukti :**
+![16](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/64d2c08d-905e-4954-9165-cadbbaa37cf1)
+![17](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/cf67ee44-8af6-4382-b674-cc2a762216e5)
+<br>
 
 ## **Soal Nomor 9**
 Arjuna merupakan suatu Load Balancer Nginx dengan tiga worker (yang juga menggunakan nginx sebagai webserver) yaitu Prabakusuma, Abimanyu, dan Wisanggeni. Lakukan deployment pada masing-masing worker.
 
 <br>**Langkah Penyelesaian Soal 9 ** <br>
 Pada 3 Nginx diatas, lakukan hal yang sama:
-	a). Pada terminal dan /root/.bashrc : 
-		 apt-get update && apt install nginx php php-fpm -y
-	c). Pada terminal : 
-		 mkdir /var/www/arjuna.b23.com
-	d). Masuk ke directory /var/www/arjuna.b23.com dan buat file index.php yang berisi : 
-	```bash
-	 <?php
+a). Pada terminal dan /root/.bashrc : 
+```bash
+apt-get update && apt install nginx php php-fpm -y
+```
+b). Pada terminal : _ _mkdir /var/www/arjuna.b23.com_ _
+c). Masuk ke directory /var/www/arjuna.b23.com dan buat file index.php yang berisi : 
+```bash
+<?php
  echo "Halo, Kamu berada di Prabukusuma"; #ganti sesuai node
- ?>
+?>
 ```
 <br>
 e). Masuk ke directory /etc/nginx/sites-available dan nano arjuna dengan isi 
@@ -353,33 +374,41 @@ server {
  }
 ```
 <br>
-f). Pada terminal : 
+f). Pada terminal :
+```bash
 ln -s /etc/nginx/sites-available/arjuna /etc/nginx/sites-enabled
- service nginx restart
-Bukti : 
- nginx -t pada tiap nginx worker
-
-
-
+service nginx restart
+```
+**Bukti :**
+nginx -t pada tiap nginx worker
+![18](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/c1bf76c5-5f38-4a9e-8b12-cd2bec482bdf)
+![19](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/dfc9d9cf-cc63-4a74-97e2-7806be2fa51d)
+![20](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/14adc548-7b49-44b9-8d4d-48cb8e76eb44)
+<br>
 	
 ## **Soal Nomor 10**
-Kemudian gunakan algoritma Round Robin untuk Load Balancer pada Arjuna. Gunakan server_name pada soal nomor 1. Untuk melakukan pengecekan akses alamat web tersebut kemudian pastikan worker yang digunakan untuk menangani permintaan akan berganti ganti secara acak. Untuk webserver di masing-masing worker wajib berjalan di port 8001-8003. Contoh
-    - Prabakusuma:8001
-    - Abimanyu:8002
-    - Wisanggeni:8003
+Kemudian gunakan algoritma Round Robin untuk Load Balancer pada Arjuna. Gunakan server_name pada soal nomor 1. Untuk melakukan pengecekan akses alamat web tersebut kemudian pastikan worker yang digunakan untuk menangani permintaan akan berganti ganti secara acak. Untuk webserver di masing-masing worker wajib berjalan di port 8001-8003. Contoh:
+- Prabakusuma:8001
+- Abimanyu:8002
+- Wisanggeni:8003
 
 <br>**Langkah Penyelesaian Soal 10 ** <br>
-	a). Pada terminal Arjuna dan simpan di /root/.bashrc 
-		apt-get update
+a). Pada terminal Arjuna dan simpan di /root/.bashrc 
+```bash
+apt-get update
 apt-get install nginx
-b). Pada terminal : service nginx start
-    service nginx status
-			    Cd /etc/nginx/sites-available
-			    Nsno lb-arjuna :
-
+```
+b). Pada terminal : 
+```bash
+service nginx start
+service nginx status
+cd /etc/nginx/sites-available
+nano lb-arjuna :
+```
+![21](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/372d4fa4-edae-4558-b1fe-043fc497db6f)
 <br>
-c). Pada tiap masing-masing worker : 
-Prabukusuma
+c). Pada tiap masing-masing worker : <br>
+Prabukusuma <br>
 masuk ke directory /etc/nginx/sites-available dan nano arjuna dengan isi
 ```bash
 server {
@@ -411,7 +440,7 @@ server {
 ```
 <br>
 
-Abimanyu
+Abimanyu<br>
 masuk ke directory /etc/nginx/sites-available dan nano arjuna dengan isi
 ```bash
 server {
@@ -443,7 +472,7 @@ server {
 ```
 <br>
 
-Wisanggeni
+Wisanggeni<br>
 masuk ke directory /etc/nginx/sites-available dan nano arjuna dengan isi
 ```bash
 server {
@@ -474,16 +503,20 @@ server {
  }
 ```
 <br>
-
-c). Pada terminal :  
+d). Pada terminal : 
+```bash
 ln -s /etc/nginx/sites-available/lb-arjuna /etc/nginx/sites-enabled
 service nginx restart
-Bukti : 
+```
+**Bukti :** 
 Pada Nakula, install lynx dan simpan di /root/.bashrc
+```bash
 apt-get update
 apt-get install lynx
-Lynx http://10.20.3.1:8001
-
+```
+<br>
+_ _lynx http://10.20.3.1:8001_ _
+![22](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/74e05af9-e19a-4000-974d-a60e579ed06c)
 
 ## **Soal Nomor 11**
 Selain menggunakan Nginx, lakukan konfigurasi Apache Web Server pada worker Abimanyu dengan web server www.abimanyu.yyy.com. Pertama dibutuhkan web server dengan DocumentRoot pada /var/www/abimanyu.yyy
