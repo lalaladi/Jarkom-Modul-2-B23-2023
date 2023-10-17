@@ -139,9 +139,7 @@ zone "arjuna.b23.com" {
 	file "/etc/bind/jarkom/arjuna";
  	};
 ```
-
-<br>
-- Pada terminal :
+- Pada terminal 
 ```bash
 mkdir /etc/bind/jarkom
 cp /etc/bind/db.local /etc/bind/jarkom/arjuna
@@ -173,20 +171,22 @@ a). Pada _/root/.bashrc_
 apt-get update
 apt-get install bind9 -y
 ```
+
 <br>
 b). Pembuatan Domain 
 <br>
-Pada terminal Yudhistira ketik _nano /etc/bind/named.conf.local_ 
-<br>
+Pada terminal Yudhistira ketik *nano /etc/bind/named.conf.local*
 Isi dengan  
+<br>
+
 ```bash
 zone "abimanyu.b23.com" {
     type master;
     file "/etc/bind/jarkom/abimanyu";
     };
 ```
-<br>
-Pada terminal :
+
+Pada terminal 
 ```bash
 mkdir /etc/bind/jarkom
 cp /etc/bind/db.local /etc/bind/jarkom/abimanyu
@@ -196,10 +196,9 @@ nano /etc/bind/jarkom/abimanyu
 ![6](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/95f887f9-f8cf-493d-8839-d725d45a417e)
 
 <br>
-Pada terminal : *service bind9 restart*
+Pada terminal :_service bind9 restart_
 
 **Untuk pembuktiannya :** 
-<br>
 Pada /etc/resolv.conf, masukkan nameserver IP Yudhistira **nameserver 10.20.1.4**
 Lalu ping domain yang telah dibuat.
 
@@ -224,8 +223,13 @@ zone "3.20.10.in-addr.arpa" {
     file "/etc/bind/jarkom/reverseabimanyu";
 };
 ```
+
 <br>
-b). Copy-kan file db.local : *cp /etc/bind/db.local /etc/bind/jarkom/reverseabimanyu*
+b). Copy-kan file db.local
+
+```bash
+cp /etc/bind/db.local /etc/bind/jarkom/reverseabimanyu
+```
 
 <br>
 c). Lalu edit file reverseabimanyu
@@ -234,17 +238,21 @@ c). Lalu edit file reverseabimanyu
 
 <br>
 d). Pada terminal : _service bind9 restart_ 
+
 <br>
 e). Pada terminal Nakula dan tambahkan isi _/root/.bashrc_
+
 ```bash
 	apt-get update
 	apt-get install dnsutils
 ```
+
 **Bukti :** <br>
 Pada terminal Nakula ketik : 
 ```bash 
 	host -t PTR 10.20.3.3
 ```
+
 ![9](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/f13ac826-cc01-42fb-a950-6cfad4290f26)
 
 <br>
@@ -271,16 +279,21 @@ zone "abimanyu.b23.com" {
     file "/etc/bind/jarkom/abimanyu";
 };
 ```
-<br>
-b). Pada terminal : *service bind9 restart* 
 
 <br>
-c). Konfigurasi Werkudara <br>
+b). Pada terminal :_service bind9 restart_
+
+<br>
+c). Konfigurasi Werkudara 
+
+<br>
 - Pada terminal dan simpan di /root/.bashrc
+
 ```bash
 	apt-get update
 	apt-get install bind9 -y
 ```
+
 Tambahkan syntax di /etc/bind/named.conf.local
 ```bash
 zone "arjuna.b23.com" {
@@ -303,6 +316,7 @@ Pada terminal : service bind9 restart
 nameserver 10.20.1.4
 nameserver 10.20.1.5
 ```
+
 3. Lalu ping arjuna atau abimanyu.
 
 ## **Soal Nomor 7**
@@ -366,8 +380,10 @@ a). Pada terminal dan /root/.bashrc :
 ```bash
 apt-get update && apt install nginx php php-fpm -y
 ```
-b). Pada terminal : _mkdir /var/www/arjuna.b23.com_ <br>
-c). Masuk ke directory /var/www/arjuna.b23.com dan buat file index.php yang berisi : 
+b). Pada terminal : _mkdir /var/www/arjuna.b23.com_
+<br>
+c). Masuk ke directory /var/www/arjuna.b23.com dan buat file index.php yang berisi
+
 ```bash
 <?php
  echo "Halo, Kamu berada di Prabukusuma"; #ganti sesuai node
@@ -375,8 +391,9 @@ c). Masuk ke directory /var/www/arjuna.b23.com dan buat file index.php yang beri
 ```
 <br>
 d). Masuk ke directory /etc/nginx/sites-available dan nano arjuna dengan isi 
+
 ```bash
-  server {
+server {
 
  	listen 80;
 
@@ -401,20 +418,24 @@ d). Masuk ke directory /etc/nginx/sites-available dan nano arjuna dengan isi
 
  	error_log /var/log/nginx/arjuna_error.log;
  	access_log /var/log/nginx/arjuna_access.log;
-  	}
+	}
 ```
+
 <br>
 f). Pada terminal 
+
 ```bash
 ln -s /etc/nginx/sites-available/arjuna /etc/nginx/sites-enabled
 service nginx restart
 ```
+
 **Bukti :**
 nginx -t pada tiap nginx worker
 ![18](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/c1bf76c5-5f38-4a9e-8b12-cd2bec482bdf)
+
 ![19](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/dfc9d9cf-cc63-4a74-97e2-7806be2fa51d)
+
 ![20](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/14adc548-7b49-44b9-8d4d-48cb8e76eb44)
-<br>
 	
 ## **Soal Nomor 10**
 Kemudian gunakan algoritma Round Robin untuk Load Balancer pada Arjuna. Gunakan server_name pada soal nomor 1. Untuk melakukan pengecekan akses alamat web tersebut kemudian pastikan worker yang digunakan untuk menangani permintaan akan berganti ganti secara acak. Untuk webserver di masing-masing worker wajib berjalan di port 8001-8003. Contoh:
@@ -546,7 +567,9 @@ apt-get update
 apt-get install lynx
 ```
 <br>
-_lynx http://10.20.3.1:8001_
+lynx http://10.20.3.1:8001 
+<br>
+
 ![22](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/74e05af9-e19a-4000-974d-a60e579ed06c)
 
 ## **Soal Nomor 11**
