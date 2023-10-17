@@ -323,7 +323,7 @@ nameserver 10.20.1.5
 Seperti yang kita tahu karena banyak sekali informasi yang harus diterima, buatlah subdomain khusus untuk perang yaitu baratayuda.abimanyu.yyy.com dengan alias www.baratayuda.abimanyu.yyy.com yang didelegasikan dari Yudhistira ke Werkudara dengan IP menuju ke Abimanyu dalam folder Baratayuda.
 
 <br>**Langkah Penyelesaian Soal 7 :** <br>
-a). Konfigurasi pada Yudhistira : <br>
+**a). Konfigurasi pada Yudhistira :** <br>
 edit _/etc/bind/jarkom/abimanyu_
 ![10](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/1038d860-a6d5-46cd-bffc-f168fb3b336d)
 <br>
@@ -332,7 +332,8 @@ Edit  /etc/bind/named.conf.options dengan comment dan tambahkan baris seperti ga
 ![11](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/0d1e1b8f-692c-4b6f-9a32-656f39ca89aa) 
 Pada terminal : _service bind9 restart_
 <br>
-b). Konfigurasi pada Werkudara<br>
+
+**b). Konfigurasi pada Werkudara<br>**
 Edit _/etc/bind/named.conf.options_ dengan comment dan tambahkan baris seperti gambar
 ![12](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/71d924b7-7524-4788-891c-efc8b59ed843)
 <br>
@@ -352,9 +353,8 @@ cp /etc/bind/db.local /etc/bind/delegasi/baratayuda
 ```
 ![13](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/119245b2-ac08-42d9-b7b5-214e09e96e9d)
 <br>
-
-Pada terminal : _service bind9 restart_ <br>
-**Bukti :** 
+<br>Pada terminal : _service bind9 restart_ <br>
+**Bukti :** <br>
 ![14](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/5bbb0ae2-a5cd-4498-aa17-13d84245ff5b)
 <br>
 
@@ -366,10 +366,14 @@ a). Edit _/etc/bind/delegasi/baratayuda_ di Werkudara
 ![15](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/5f481705-b350-420a-aa5e-7d8feb953757)	
 <br>
 b). Pada terminal Werkudara: _service bind9 restart_ <br>
-**Bukti :**
-![16](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/64d2c08d-905e-4954-9165-cadbbaa37cf1)
-![17](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/cf67ee44-8af6-4382-b674-cc2a762216e5)
+**Bukti :** 
 <br>
+![16](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/64d2c08d-905e-4954-9165-cadbbaa37cf1)
+
+<br>
+
+![17](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/cf67ee44-8af6-4382-b674-cc2a762216e5)
+
 
 ## **Soal Nomor 9**
 Arjuna merupakan suatu Load Balancer Nginx dengan tiga worker (yang juga menggunakan nginx sebagai webserver) yaitu Prabakusuma, Abimanyu, dan Wisanggeni. Lakukan deployment pada masing-masing worker.
@@ -554,8 +558,11 @@ server {
  }
 ```
 <br>
+d). Buat index.php di directory /var/www.arjuna.b23.com
 
-d). Pada terminal : 
+![35](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/b8d77143-62f5-4111-9f60-aeadb6d95923)
+
+e). Pada terminal : 
 ```bash
 ln -s /etc/nginx/sites-available/lb-arjuna /etc/nginx/sites-enabled
 service nginx restart
