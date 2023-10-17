@@ -153,9 +153,12 @@ nano /etc/bind/jarkom/arjuna
 **Untuk pembuktiannya :** <br>
 - Pada /etc/resolv.conf, masukkan nameserver IP Yudhistira (nameserver 10.20.1.4)<br>
 - Lalu ping domain dan alias yang telah dibuat<br>
+
 ![5](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/52981d84-cab9-4e67-8c7d-0f4af51f4214)
+
 <br>
 ![34](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/f3537cbe-1df5-4b9c-a7e2-9ee4a034931c) 
+
 <br>
 
 ## **Soal Nomor 3**
@@ -168,9 +171,10 @@ apt-get update
 apt-get install bind9 -y
 ```
 <br>
-b). Pembuatan Domain <br>
+b). Pembuatan Domain 
+<br>
 Pada terminal Yudhistira ketik _nano /etc/bind/named.conf.local_ <br>
-Isi dengan : 
+Isi dengan  
 ```bash
 zone "abimanyu.b23.com" {
     type master;
@@ -184,10 +188,13 @@ mkdir /etc/bind/jarkom
 cp /etc/bind/db.local /etc/bind/jarkom/abimanyu
 nano /etc/bind/jarkom/abimanyu
 ```
+
 ![6](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/95f887f9-f8cf-493d-8839-d725d45a417e)
+
 <br>
 Pada terminal : *service bind9 restart*
-**Untuk pembuktiannya :** <br>
+**Untuk pembuktiannya :** 
+<br>
 Pada /etc/resolv.conf, masukkan nameserver IP Yudhistira **nameserver 10.20.1.4**
 Lalu ping domain yang telah dibuat.
 
@@ -213,14 +220,17 @@ zone "3.20.10.in-addr.arpa" {
 };
 ```
 <br>
-b). Copy-kan file db.local :*cp /etc/bind/db.local /etc/bind/jarkom/reverseabimanyu*
+b). Copy-kan file db.local : *cp /etc/bind/db.local /etc/bind/jarkom/reverseabimanyu*
+
 <br>
 c). Lalu edit file reverseabimanyu
+
 ![8](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/28d2c5f3-f828-4eff-8288-fc22e9843554)
+
 <br>
 d). Pada terminal : _service bind9 restart_ 
 <br>
-e). Pada terminal Nakula dan tambahkan isi _/root/.bashrc_ : 
+e). Pada terminal Nakula dan tambahkan isi _/root/.bashrc_
 ```bash
 	apt-get update
 	apt-get install dnsutils
@@ -231,6 +241,7 @@ Pada terminal Nakula ketik :
 	host -t PTR 10.20.3.3
 ```
 ![9](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/f13ac826-cc01-42fb-a950-6cfad4290f26)
+
 <br>
 
 ## **Soal Nomor 6**
@@ -257,6 +268,7 @@ zone "abimanyu.b23.com" {
 ```
 <br>
 b). Pada terminal : *service bind9 restart* 
+
 <br>
 c). Konfigurasi Werkudara <br>
 - Pada terminal dan simpan di /root/.bashrc
@@ -275,11 +287,11 @@ zone "abimanyu.b23.com" {
     type slave;
     masters {10.20.1.4; };
     file "/var/lib/bind/jarkom/abimanyu";
-};
+    };
 ```
 
 Pada terminal : service bind9 restart
-**Bukti :**
+**Bukti**
 1. Lakukan  service bind9 stop di Yudhistira <br>
 2. Lakukan pengaturan nameserver dengan menambahkan isi */etc/resolv.conf* di Nakula :
 ```bash
@@ -387,7 +399,7 @@ d). Masuk ke directory /etc/nginx/sites-available dan nano arjuna dengan isi
   	}
 ```
 <br>
-f). Pada terminal :
+f). Pada terminal 
 ```bash
 ln -s /etc/nginx/sites-available/arjuna /etc/nginx/sites-enabled
 service nginx restart
