@@ -129,14 +129,15 @@ apt-get install bind9 -ya
  <br>
  
 b). Pembuatan Domain<br>
-- Pada terminal Yudhistira ketik : *nano /etc/bind/named.conf.local* 
+- Pada terminal Yudhistira ketik : *nano /etc/bind/named.conf.local*
+  
 <br>
 Isi dengan 
 ```bash
 zone "arjuna.b23.com" {
 	type master;
 	file "/etc/bind/jarkom/arjuna";
-	};
+ 	};
 ```
 <br>
 
