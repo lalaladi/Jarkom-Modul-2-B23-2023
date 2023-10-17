@@ -134,7 +134,7 @@ Isi dengan :
 zone "arjuna.b23.com" {
     type master;
     file "/etc/bind/jarkom/arjuna";
-};
+    };
 ```
 <br>
 - Pada terminal :
@@ -148,7 +148,7 @@ nano /etc/bind/jarkom/arjuna
 - Pada _/root/.bashrc_  tambahkan :_service bind9 restart_<br>
 **Untuk pembuktiannya :** <br>
 - Pada /etc/resolv.conf, masukkan nameserver IP Yudhistira (nameserver 10.20.1.4)<br>
-- Lalu ping domain dan alias yang telah dibuat
+- Lalu ping domain dan alias yang telah dibuat<br>
 ![5](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/52981d84-cab9-4e67-8c7d-0f4af51f4214)
 ![34](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/f3537cbe-1df5-4b9c-a7e2-9ee4a034931c) 
 <br>
@@ -164,7 +164,7 @@ apt-get install bind9 -y
 ```
 <br>
 b). Pembuatan Domain <br>
-Pada terminal Yudhistira ketik :_nano /etc/bind/named.conf.local_ <br>
+Pada terminal Yudhistira ketik _nano /etc/bind/named.conf.local_ <br>
 Isi dengan : 
 ```bash
 zone "abimanyu.b23.com" {
