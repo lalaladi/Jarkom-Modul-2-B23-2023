@@ -13,17 +13,17 @@ Berikut adalah dokumentasi yang tiap soal dan penjelasan terkait perintah yang d
 
 ## **Soal Nomor 1**
 Buatlah topologi dengan:
-Yudhistira – DNS Master
-Werkudara – DNS Slave
-Arjuna – Load Balancer
-Prabukusuma, Abimanyu, dan Wisanggeni – Web Server
+Yudhistira – DNS Master<br>
+Werkudara – DNS Slave<br>
+Arjuna – Load Balancer<br>
+Prabukusuma, Abimanyu, dan Wisanggeni – Web Server<br>
 Nakula dan Sadewa – Client 
 <br>**Langkah Penyelesaian Soal 1 :** <br>
-a). 
- 
+a). ![1](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/4c437640-5344-4752-9aed-3becda9ebd6f)
 
 b). Lakukan konfigurasi IP tiap node 
 Pandudewanata
+```bash
 auto eth0
 iface eth0 inet dhcp
 
@@ -39,66 +39,82 @@ auto eth3
 iface eth1 inet static
 	address 10.20.3.1
 	netmask 255.255.255.0
+```
 Werkudara 
+```bash
 auto eth0
 iface eth0 inet static
 	address 10.20.1.5
 	netmask 255.255.255.0
 	gateway 10.20.1.1
-
+```
 Yudhistira
+```bash
 auto eth0
 iface eth0 inet static
 	address 10.20.1.4
 	netmask 255.255.255.0
 	gateway 10.20.1.1
-
+```
 Arjuna 
+```bash
 auto eth0
 iface eth0 inet static
 	address 10.20.2.2
 	netmask 255.255.255.0
 	gateway 10.20.2.1
+```
 Prabukusuma
-		auto eth0
+```bash
+auto eth0
 iface eth0 inet static
 	address 10.20.3.2
 	netmask 255.255.255.0
 	gateway 10.20.3.1
+```
  Abimanyu
+ ```bash
 auto eth0
 iface eth0 inet static
 	address 10.20.3.3
 	netmask 255.255.255.0
 	gateway 10.20.3.1
+```
 Wisanggeni
+```bash
 auto eth0
 iface eth0 inet static
 	address 10.20.3.4
 	netmask 255.255.255.0
 	gateway 10.20.3.1
+```
 Nakula
+```bash
 auto eth0
 iface eth0 inet static
 	address 10.20.1.2
 	netmask 255.255.255.0
 	gateway 10.20.1.1
-
+```
 Sadewa
+```bash
 auto eth0
 iface eth0 inet static
 	address 10.20.1.3
 	netmask 255.255.255.0
-gateway 10.20.1.2
+	gateway 10.20.1.2
+```
 	**Untuk tiap command yang ada dijalankan terlebih dahulu di terminal lalu simpan di /root/**
 c). Pada /root/.bashrc  dengan Prefix IP kelompok ini (B23) 
+```bash
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.20.0.0/16
-
+```
 d). Agar dapat terhubung ke internet melalui Pandudewanata ketik dalam /root/.bashrc tiap node ubuntu yang dibuat 
+```bash
  echo nameserver 192.168.122.1 > /etc/resolv.conf
+```
 Lalu jika dilakukan ping google.com pada ubuntu yang dipilih akan terlihat seperti berikut 
-
-
+![2](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/5abc4a07-c91c-41d6-a125-ac463a8ea528)
 
 ## **Soal Nomor 2**
 Buatlah website utama pada node arjuna dengan akses ke arjuna.yyy.com dengan alias www.arjuna.yyy.com dengan yyy merupakan kode kelompok.
