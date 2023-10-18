@@ -584,16 +584,24 @@ lynx http://10.20.3.1:8001
 ## **Soal Nomor 11**
 Selain menggunakan Nginx, lakukan konfigurasi Apache Web Server pada worker Abimanyu dengan web server www.abimanyu.yyy.com. Pertama dibutuhkan web server dengan DocumentRoot pada /var/www/abimanyu.yyy
 
-<br>**Langkah Penyelesaian Soal 11 ** <br>
-Konfigurasi apache
-	a). Install apache dan simpan di /root/.bashrc : apt-get install apache2
-      				    service apache2 start
-			       				    apt-get install php
-							    apt-get install libapache2-mod-php7.0
-    service apache2 restart
-b).  Pada terminal Abimanyu : cd /var/www/
-					Mkdir html
-	c). Buat file dengan perintah nano /var/www/html/index.php 
+<br>**Langkah Penyelesaian Soal 11** <br>
+Konfigurasi apache<br>
+a). Install apache dan simpan di /root/.bashrc :
+```bash
+apt-get install apache2
+service apache2 start
+apt-get install php
+apt-get install libapache2-mod-php7.0
+service apache2 restart
+```
+
+b).  Pada terminal Abimanyu : 
+```bash
+cd /var/www/
+mkdir html
+```
+
+c). Buat file dengan perintah nano /var/www/html/index.php 
 ```bash
 <?php
 	phpinfo();
@@ -602,133 +610,206 @@ b).  Pada terminal Abimanyu : cd /var/www/
 <br>
 
 Konfigurasi port
-Pada terminal Abimanyu : cd /etc/apache2/sites-available			      
-       Cp 000-default.conf abimanyu.b23.com.conf
-			        nano abimanyu.b23.com.conf : 
-ganti DocumentRoot menjadi /var/www/abimanyu.b23
- ServerName abimanyu.b23.com
- ServerAlias www.abimanyu.b23.com
+<br>
+Pada terminal Abimanyu :
+```bash
+cd /etc/apache2/sites-available			      
+cp 000-default.conf abimanyu.b23.com.conf
+*nano abimanyu.b23.com.conf : 
+*ganti DocumentRoot menjadi /var/www/abimanyu.b23
+*ServerName abimanyu.b23.com
+*ServerAlias www.abimanyu.b23.com
+```
 
-
+![23](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/3ef30d10-b8af-48fe-a145-dd02d2cbc95a)
 Tambahkan pada /root/.bashrc : 
+```bash
 	a2ensite abimanyu.b23.com
 	service apache2 restart
+```
 
 ## **Soal Nomor 12**
 Setelah itu ubahlah agar url www.abimanyu.yyy.com/index.php/home menjadi www.abimanyu.yyy.com/home.
 
-<br>**Langkah Penyelesaian Soal 12 ** <br>
-	a). Pada terminal abimanyu 
-		Nano /etc/apache2/sites-available/ abimanyu.b23.com.conf	
+**Langkah Penyelesaian Soal 12** <br>
+a). Pada terminal abimanyu
+```bash
+Nano /etc/apache2/sites-available/ abimanyu.b23.com.conf	
+```
 
-
+![24](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/0e79545c-5f1c-4d83-96ef-199b1160caf3)
 Bukti : pada nakula ketik lynx abimanyu.b23.com/home
+
+![36](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/c37ee4e3-ca3c-4312-9f14-30d6ed2a550c)
+
+![37](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/fc4354da-a9df-4f3e-b64a-526f68952f05)
 
 ## **Soal Nomor 13**
 Selain itu, pada subdomain www.parikesit.abimanyu.yyy.com, DocumentRoot disimpan pada /var/www/parikesit.abimanyu.yyy
 
-<br>**Langkah Penyelesaian Soal 13 ** <br>
-	Pada terminal Abimanyu : cd /etc/apache2/sites-available			      
-      	       cp 000-default.conf parikesit.abimanyu.b23.com.conf
-			        	      parikesit.abimanyu.b23.com.conf : 
-ganti DocumentRoot menjadi /var/www/parikesit.abimanyu.b23
- ServerName parikesit.abimanyu.b23.com
- ServerAlias www.parikesit.abimanyu.b23.com
+**Langkah Penyelesaian Soal 13** 
+<br>
+Pada terminal Abimanyu : 
+```bash
+cd /etc/apache2/sites-available			      
+cp 000-default.conf parikesit.abimanyu.b23.com.conf
+parikesit.abimanyu.b23.com.conf : 
+*ganti DocumentRoot menjadi /var/www/parikesit.abimanyu.b23
+*ServerName parikesit.abimanyu.b23.com
+*ServerAlias www.parikesit.abimanyu.b23.com
+```
 
+![25](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/95f836f1-7435-4721-a8a2-13d346352b97)
 
 Tambahkan pada /root/.bashrc : 
-	a2ensite parikesit.abimanyu.b23.com.conf
-	service apache2 restart
+```bash
+a2ensite parikesit.abimanyu.b23.com.conf
+service apache2 restart
+```
 	
 ## **Soal Nomor 14**
 Pada subdomain tersebut folder /public hanya dapat melakukan directory listing sedangkan pada folder /secret tidak dapat diakses (403 Forbidden).
 
-<br>**Langkah Penyelesaian Soal 14 ** <br>
-	a). folder /public
-Pada terminal : nano /etc/apache2/sites-available/parikesit.abimanyu.b23.com.conf
-Tambahkan: 
-Service apache2 restart
-Bukti : 
-Di nakula, ketik lynx parikesit.abimanyu.b23.com/public: 
-              lynx parikesit.abimanyu.b23.com/secret
+<br>**Langkah Penyelesaian Soal 14** <br>
+a). folder /public
+Pada terminal : _nano /etc/apache2/sites-available/parikesit.abimanyu.b23.com.conf_
 
+Tambahkan: 
+![26](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/cd9fb229-ec13-4fba-b44b-0f3286317191)
+
+_Service apache2 restart_
+<br>
+
+**Bukti :** 
+Di nakula, ketik 
+lynx parikesit.abimanyu.b23.com/public
+
+![38](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/0285070d-85a7-44bc-a49c-66313c4a49ed)
+
+<br>
+
+lynx parikesit.abimanyu.b23.com/secret
+
+![39](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/5da7b757-a20f-499c-b176-5e9117ae2c27)
 
 ## **Soal Nomor 15**
 Buatlah kustomisasi halaman error pada folder /error untuk mengganti error kode pada Apache. Error kode yang perlu diganti adalah 404 Not Found dan 403 Forbidden.
 
-<br>**Langkah Penyelesaian Soal 15 ** <br>
-	a). Pada terminal abimanyu : cd /var/www/parikesit.abimanyu.b23.com
-					nano .htaccess
+<br>**Langkah Penyelesaian Soal 15** <br>
+a). Pada terminal abimanyu : 
+```bash
+cd /var/www/parikesit.abimanyu.b23.com
+nano .htaccess
+```
+
+![27](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/73565215-4a60-4cb3-9474-8e7eb3998577)
 
 b). Edit nano /etc/apache2/sites-available/parikesit.abimanyu.b23.com.conf
+![28](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/b84f4f05-cfe6-4cbf-88cb-0b5d702779cf)
 
-service apache2 restart
-Bukti : 
-Pada nakula ketik : lynx parikesit.abimanyu.b23.com/error/404
-		      lynx parikesit.abimanyu.b23.com/error/403
+c). service apache2 restart
+**Bukti :** 
+Pada nakula ketik : 
+```bash
+lynx parikesit.abimanyu.b23.com/error/404
+lynx parikesit.abimanyu.b23.com/error/403
+```
+
+![40](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/699de0a7-bd27-4814-a957-5ac90d948c27)
 
 ## **Soal Nomor 16**
 Buatlah suatu konfigurasi virtual host agar file asset www.parikesit.abimanyu.yyy.com/public/js menjadi 
 www.parikesit.abimanyu.yyy.com/js
  
-<br>**Langkah Penyelesaian Soal 16 ** <br>
-	a). Pada terminal abimanyu
-		nano /etc/apache2/sites-available/ parikesit.abimanyu.b23.com.conf	
+<br>**Langkah Penyelesaian Soal 16** <br>
+a). Pada terminal abimanyu
+```bash
+nano /etc/apache2/sites-available/ parikesit.abimanyu.b23.com.conf	
+service apache2 restart
+```
 
-      b). service apache2 restart
-     c). Pada terminal pindah ke /var/www/parikesit.abimanyu.b23.com/public/js
-Bukti :  
+![29](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/4054cbe1-9d03-45e5-ada8-93702bf5bdf4)
+
+b). Pada terminal pindah ke /var/www/parikesit.abimanyu.b23.com/public/js 
+<br>  
+
+![41](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/d3d7f618-eae4-475b-a6b1-204b42dc2412)
 
 ## **Soal Nomor 17**
 Agar aman, buatlah konfigurasi agar www.rjp.baratayuda.abimanyu.yyy.com hanya dapat diakses melalui port 14000 dan 14400.
 
-<br>**Langkah Penyelesaian Soal 17 ** <br>
-a). Konfigurasi port 14000 dan 14400
-Masuk dir /etc/apache2/sites-available
+<br>**Langkah Penyelesaian Soal 17** <br>
+a). Konfigurasi port 14000 dan 14400 
+<br>
+- Masuk dir _/etc/apache2/sites-available
 cp 000-default.conf rjp.baratayuda.abimanyu.b23.com.conf 
-nano rjp.baratayuda.abimanyu.b23.com.conf 
+nano rjp.baratayuda.abimanyu.b23.com.conf_ 
 
+![30](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/1972fffd-b928-49b5-a455-ef7b8fe90868)
 
-Tambahkan kedua port itu kedalam file ports.conf
+<br>
+- Tambahkan kedua port itu kedalam file ports.conf <br>
 
-Tambahkan pada /root/.bashrc : 
-	a2ensite rjp.baratayuda.abimanyu.b23.com.conf
-	service apache2 restart
-Terminal :  -    cd /var/www
+![31](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/6afc42a1-5172-4743-900a-6c96d3312e40)
+
+- Tambahkan pada /root/.bashrc : 
+```bash
+a2ensite rjp.baratayuda.abimanyu.b23.com.conf
+service apache2 restart
+```
+
+- Terminal :
+```bash 
+cd /var/www
 mkdir baratayuda.abimanyu.b23
 cd baratayuda.abimanyu.b23
+```
+
 Nano index.php yang berisi : 
  ```bash
 <?php
-					echo “ini adalah rjp”;
+	echo “ini adalah rjp”;
 ?>
 ```
 <br> 
-Bukti : 
+
+**Bukti :** 
+![42](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/ad7ff73e-5cf7-4515-bff1-37114f92489e)
 
 ## **Soal Nomor 18**
 Untuk mengaksesnya buatlah autentikasi username berupa “Wayang” dan password “baratayudayyy” dengan yyy merupakan kode kelompok. Letakkan DocumentRoot pada /var/www/rjp.baratayuda.abimanyu.yyy.
 
-<br>**Langkah Penyelesaian Soal 18 ** <br>
-	a). Terminal abimanyu :
-Masuk  cd /var/www/baratayuda.abimanyu.b23
-Nano .htpasswd : berisi password dari soal
- - Edit dengan nano /etc/apache2/sites-available/rjp.baratayuda.abimanyu.b23.com.conf 
+<br>**Langkah Penyelesaian Soal 18** <br>
+a). Terminal abimanyu :
+<br>
+Masuk  cd /var/www/baratayuda.abimanyu.b23<br>
+Nano .htpasswd : berisi password dari soal<br>
+Edit dengan nano /etc/apache2/sites-available/rjp.baratayuda.abimanyu.b23.com.conf<br>
+
+![32](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/1183c66d-eda8-4cfb-9cb7-a3573d61f188)
 
 service apache2 restart
-Bukti : 
 
 ## **Soal Nomor 19**
 Buatlah agar setiap kali mengakses IP dari Abimanyu akan secara otomatis dialihkan ke www.abimanyu.yyy.com (alias)
 
-<br>**Langkah Penyelesaian Soal 19 ** <br>
-	a). Masuk dir /etc/apache2/sites-available
-	b)  nano abimanyu.b23.com.conf seperti  berikut : 
+<br>**Langkah Penyelesaian Soal 19** <br>
+a). Masuk dir /etc/apache2/sites-available<br>
+b). nano abimanyu.b23.com.conf seperti  berikut : 
 
+![33](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/679d7269-6257-423f-9e44-f99e1d685f29)
+
+maka 
+![43](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/ca2ac512-7c0a-4ee2-ae35-2faaced98d84)
 
 ## **Soal Nomor 20**
 Karena website www.parikesit.abimanyu.yyy.com semakin banyak pengunjung dan banyak gambar gambar random, maka ubahlah request gambar yang memiliki substring “abimanyu” akan diarahkan menuju abimanyu.png.
 
-<br>**Langkah Penyelesaian Soal 19 ** <br>
+<br>**Langkah Penyelesaian Soal 20** <br>
+a). Masuk dir /var/www/parikesit.abimanyu.b23
+b)  nano .htacces seperti  berikut  
+<br>
 
+![44](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/c11f9e91-207b-4f3d-983e-6126ba4acc52)
 
+Perintah RewriteRule akan mengarahkan substring ‘abimanyu’ menuju ‘abimanyu.png
