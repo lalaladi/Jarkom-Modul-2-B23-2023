@@ -317,7 +317,9 @@ nameserver 10.20.1.4
 nameserver 10.20.1.5
 ```
 
-3. Lalu ping arjuna atau abimanyu.
+3. Lalu ping arjuna atau abimanyu
+   
+![bukti 6](https://github.com/lalaladi/Jarkom-Modul-1-B23-2023/assets/90541607/51245143-0b38-471d-8134-d8511e762be6)
 
 ## **Soal Nomor 7**
 Seperti yang kita tahu karena banyak sekali informasi yang harus diterima, buatlah subdomain khusus untuk perang yaitu baratayuda.abimanyu.yyy.com dengan alias www.baratayuda.abimanyu.yyy.com yang didelegasikan dari Yudhistira ke Werkudara dengan IP menuju ke Abimanyu dalam folder Baratayuda.
